@@ -1,0 +1,43 @@
+<!-- extends the layout -->
+{% extends "layout.html" %}
+
+<!-- loads the static contents -->
+{% load static %} 
+
+<!-- Define the title for the page-->
+{% block title %} 
+<title>Registration</title>
+{% endblock %} 
+
+
+<!-- Define the  styles for the page-->
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+{% endblock %}
+{% block script %}
+  <script src="{% static 'js/register.js' %} " type="text/javascript" charset="utf-8">
+    
+  </script>
+{% endblock %} 
+
+{% block main %}
+<div class="container">
+  <h2 class="text-center">Register Account</h2>
+  
+  <form enctype="multipart/form-data" action="" method="post" accept-charset="utf-8">
+    {% csrf_token %} 
+    <p id="msg" class="{% if success %} text-success {% else %} text-danger {% endif %} text-center">{{msg}}</p>
+    <input class="form-control" type="text" name="first_name" id="" value="{% if first_name %} {{first_name}} {% endif %}" placeholder="firstname" required/>
+    <input class="form-control" type="text" name="last_name" id="" value="{% if last_name %} {{last_name}} {% endif %}" placeholder="lastname" required />
+    <input class="form-control" type="text" name="username" id="" value="{% if username %} {{username}} {% endif %}" placeholder="username" required/>
+    <input class="form-control" type="email" name="email" id="" value="{% if email %} {{email}} {% endif %}" placeholder="email" required />
+    <input class="form-control" type="password" name="password" id="password" value="" placeholder="password" required/>
+    <input class="form-control" type="password" name="password1" id="password1" value="" placeholder="confirm password" required />
+    <input class="form-control" type="file" name="picture" accept="image/*" id="" required />
+    <p class="text-center text-info"> image 100 x 100 required</p>
+    <input class="form-control btn btn-success" type="submit"  id="register" value="Register" />
+  </form>
+    <p class="text-center">or <a href="{% url 'login' %}">login</a> to your account</p>
+</div>
+{% endblock %} 
+

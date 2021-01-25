@@ -1,0 +1,30 @@
+<!-- extends the layout -->
+{% extends "layout.html" %}
+
+<!-- loads the static contents -->
+{% load static %} 
+
+<!-- Define the title for the page-->
+{% block title %} 
+<title>Homepage</title>
+{% endblock %} 
+
+<!-- Define the  styles for the page-->
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+{% endblock %}
+
+{% block main %}
+<div class="container text-center">
+  <h1>Welcome To PicsWeb</h1>
+  <div class="pics">
+    {% for upload in uploads %}
+        <img src="{{upload.upload_url}}" alt="{{upload.title}}" />
+    {% empty %}
+    <h3 class="text-center">No Picture Available</h3>
+    
+    {% endfor %} 
+  </div>
+</div>
+{% endblock %} 
+

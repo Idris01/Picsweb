@@ -1,0 +1,42 @@
+<!-- extends the layout -->
+{% extends "layout.html" %}
+
+<!-- loads the static contents -->
+{% load static %} 
+
+<!-- Define the title for the page-->
+{% block title %} 
+<title>upload_image</title>
+{% endblock %} 
+
+
+<!-- Define the  styles for the page-->
+{% block style %}
+  <!-- link rel="stylesheet" href="{% static 'css/login.css' %}" /-->
+{% endblock %}
+{% block script %}
+  <script src="{% static 'js/upload.js' %} " type="text/javascript" charset="utf-8">
+    
+  </script>
+{% endblock %} 
+
+{% block main %}
+<div class="container">
+  <h2 class="text-center">Upload a Picture </h2>
+  
+  <form enctype="multipart/form-data" action="" method="post" accept-charset="utf-8">
+    {% csrf_token %} 
+    <p id="msg" class="{% if success %} text-success {% else %} text-danger {% endif %} text-center">{{msg}} </p>
+    
+     <input class="form-control" name="title" id="" type="text" placeholder="title" required/>
+     
+    <input class="form-control" name="description" id="" type="text" placeholder="short description" required/>
+    
+    <input class="form-control" type="file" name="picture" id="" accept="image/*" required />
+    
+    <input class="form-control btn btn-success" type="submit"  id="upload" value="Upload" />
+  </form>
+  
+</div>
+{% endblock %} 
+

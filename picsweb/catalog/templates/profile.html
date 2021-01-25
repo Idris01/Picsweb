@@ -1,0 +1,29 @@
+<!-- extends the layout -->
+{% extends "layout.html" %}
+
+<!-- loads the static contents -->
+{% load static %} 
+
+<!-- Define the title for the page-->
+{% block title %} 
+<title>Profile {{user.username}}</title>
+{% endblock %} 
+
+<!-- Define the  styles for the page-->
+{% block style %}
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+{% endblock %}
+
+{% block main %}
+<div class="container">
+  <h2 class="text-center ">Profile Page</h2>
+  <section >
+    <img src="{{user.profile.picture.url}}" alt="{{user.username}} pics" />
+    <p class="mt-2">Full Name : <strong class="text-info">{{user.first_name}} {{user.last_name}} </strong></p>
+    <p class="mt-2">Email: <strong>{{user.email}}</strong></p>
+    
+  </section>
+  
+</div>
+{% endblock %} 
+

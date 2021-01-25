@@ -1,0 +1,6 @@
+img{
+  display:inline-block;
+  width:100px;
+  min-height:100px;
+  border:2px solid black;
+}
